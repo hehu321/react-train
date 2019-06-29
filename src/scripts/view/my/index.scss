@@ -1,0 +1,103 @@
+.personhead{
+    width: 100%;
+    height: 3.5rem;
+    position: relative;
+    .backgroundurl{
+        width: 100%;
+        height: 3.5rem;
+    }
+    .usercontainer-in{
+        width: 100%;
+        position: absolute;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        left: 0;
+        bottom: 0.5rem;
+        .logo{
+            width: 25%;
+            overflow: hidden;
+            .userlogo{
+                width: 80%;
+                border-radius: 100%;
+            }
+        }
+        .content{
+            width: 60%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            align-items: center;
+            .article{
+                width: 60%;
+                .username{
+                    font-size:18px;
+                }
+                .info{
+                    font-size:14px;
+                }
+            }
+            .outbutton{
+                width: 50px;
+                line-height: 20px;
+                text-align: center;
+                border-radius: 5px;
+                background-color: #ffa21f;
+                color: aliceblue;
+            }
+        }
+    }
+    .usercontainer-out{
+        width: 100%;
+        position: absolute;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        bottom: 0.5rem;
+        .logo{
+            width: 100%;
+            text-align: center;
+            .userlogo{
+                display: inline-block;
+                width: 20%;
+                border-radius: 100%;
+                
+            }
+        }
+        .content{
+            text-align: center;
+            width: 100%;
+            p{
+                line-height: 20px;
+                color: aliceblue;
+            }
+        }
+    }
+}
+.mywallet{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    .list{
+        width: 30%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        
+        .title{
+            color: #4d4d4d;
+            text-align: center;
+            margin: 0.2rem 0;
+            line-height: 20px;
+        }
+        .content{
+            color: #928c8c;
+            text-align: center;
+            line-height: 20px;
+        }
+    }
+}

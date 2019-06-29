@@ -1,0 +1,87 @@
+.Hpicker {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background: #fff;
+    align-items: center;
+    color: #333;
+    line-height: 45px;
+    text-align: center;
+    padding: 0 5%;
+
+    .title {
+        width: 10%;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .content {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .icon {
+        width: 5%;
+        font-size: 20px;
+    }
+}
+
+.HpickerShadow-in {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 40px;
+    background-color: #fff;
+    animation: slideInUp 1s;
+    z-index: 100;
+    .header {
+        width: 100%;
+        height: 40px;
+        background-color: #108ee9;
+        color: #fff;
+        font-size: 40px;
+        text-indent: 20px;
+        text-align: left;
+        border-radius: 10px 10px 0 0 ;
+    }
+
+    .list {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #dcdfe0;
+        color: #666;
+        font-size: 16px
+    }
+}
+.HpickerShadow-out {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 40px;
+    background-color: #fff;
+    animation: slideOutDown 1s;
+    z-index: 100;
+    .header {
+        width: 100%;
+        height: 40px;
+        background-color: #108ee9;
+        color: #fff;
+        font-size: 40px;
+        text-indent: 20px;
+        text-align: left;
+        border-radius: 10px 10px 0 0 ;
+    }
+
+    .list {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #dcdfe0;
+        color: #666;
+        font-size: 16px
+    }
+}
+.hide{
+    display: none;
+}

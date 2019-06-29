@@ -1,0 +1,68 @@
+.am-card-header-content {
+    img {
+        width: 20%;
+    }
+}
+
+.cardlist {
+    width: 100%;
+    .header {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        .log{
+            width: 30%;
+            img{
+                width: 35%;
+            }
+        }
+        .content{
+            width: 60%;
+            text-align: center;
+            line-height: 30px;
+            font-size: .24rem;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;  
+            align-items: center;
+            .go{
+                width: 30%;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                img{
+                    display: inline-block;
+                    width: 30%;
+                }
+            }
+        }
+    }
+    .time{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        .depart,.arrive{
+            width: 30%;
+            font-size: 0.24rem;
+            line-height: 30px;
+            color: adjust-hue($color: #000000, $degrees: 0)
+
+        }
+        .pic{
+            width: 30%;
+            text-align: center;
+            img{
+                display: inline-block;
+                width: 20%;
+            }
+        }
+    }
+}
+.result-example .spe {
+    width: 60px;
+    height: 60px;
+  }

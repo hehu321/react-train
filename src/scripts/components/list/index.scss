@@ -1,0 +1,24 @@
+.mylist{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    animation: lightSpeedIn 1s;
+    background-color: #fff;
+    width: 100%;
+    border-bottom: 1px solid rgb(236, 231, 231);
+    .list-item{
+        width: 23%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        text-align: center;
+        .list-child{
+            width: 100%;
+            line-height: 16px;
+            margin:5px 0;
+        }
+        .mark{
+            color:#888;
+        }
+    }
+}

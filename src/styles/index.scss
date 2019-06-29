@@ -1,0 +1,16 @@
+
+
+@import "common";
+@import "animate.css";
+@import "fonts/iconfont.css";
+@import "antd-mobile.css";
+
+
+// 全局样式  golbal 
+html,body,#app,.box,#main{
+    width:100vw;
+    height:100vh;
+    background: #f5f5f5;
+    touch-action: none;
+}
+.cl:after{content: "";display: block;clear: both;height:0;overflow:hidden;visibility: hidden;}

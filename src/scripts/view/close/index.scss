@@ -1,0 +1,122 @@
+.order-content {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    background-color: #fff;
+    padding: 0.4rem 0;
+    div {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+
+    .left,
+    .right {
+        width: 30%;
+        text-align: center;
+        color: #333;
+        line-height: 1.5;
+
+        .city {
+            font-size: 18px;
+        }
+
+        .time {
+            font-size: 24px;
+        }
+    }
+
+    .middle {
+        width: 40%;
+        text-align: center;
+        color: #666;
+        .trainname {
+            font-size: 14px;
+        }
+
+        .trainMid {
+            display: block;
+            padding: 0.2rem;
+            text-align: center;
+            .trainMid-left {
+                display: inline-block;
+                width: 0.4rem;
+                height: 1px;
+                font-size: 0;
+                background: #000;
+                margin-bottom: 4px;
+            }
+
+            .timer {
+                display: inline-block;
+                padding: 0 10px;
+                font-size: 12px;
+                color: #108ee9;
+            }
+
+            .trainTime {
+                font-size: 13px;
+                color: #666;
+            }
+            .huoche{
+                width: 1rem;
+                font-size: 1rem;
+                color: #108ee9;
+            }
+        }
+    }
+}
+.seatInfo{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    line-height: 45px;
+    font-size: 16px;
+    margin: 0.2rem 0;
+    background:#fff;
+    p{
+        width: 80%;
+        text-align: center;
+        .seatName{
+            font-size: 18px;
+            color:#333;
+        }
+        .seatPrice{
+            font-size: 18px;
+            color: #ff8300;
+        }
+    }
+    .seatType{
+        width: 10%;
+        font-size: 14px;
+        color:#333;
+    }
+}
+.login{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 20px;
+    margin: 0.1rem 0;
+    padding: 10px 0;
+    background:#fff;
+    .contentlogin{
+        width: 85%;
+        .title{
+            font-size: 14px;
+            color: #212121;
+        }
+        .content{
+            font-size: 12px;
+            color: #bababa;
+        }
+    }
+    .icon{
+        width: 5%;
+        font-size:0.3rem;
+    }
+}

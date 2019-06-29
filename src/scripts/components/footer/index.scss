@@ -1,0 +1,42 @@
+
+.warp{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    li{
+        width: 25%;
+        line-height: 30px;
+        height: 30px;
+        border-radius: 5px;
+        border:1px solid #c7ced4;
+        background-color: #fff;
+        margin: 10px 0;
+        text-align: center;
+    }
+    .selected{
+        background: #3cc;
+        border-color: #3cc;
+        color: #fff;    
+    }
+}
+.buttongroup{
+    background-color: #fff;
+    line-height: 30px;
+    padding:0.4rem 0.3rem;
+    .button-reset{
+        width: 1rem;
+        text-align: center;
+        color: #3cc; 
+        float: left;
+        border-radius: 10px;
+        border:1px solid #3cc;
+    }
+    .button-confirm{
+        width: 1rem;
+        text-align: center;
+        border:1px solid #3cc;
+        color: #3cc;
+        float:right;
+        border-radius: 10px;
+    }
+}
