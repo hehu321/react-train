@@ -2,6 +2,7 @@ import { TabBar, Modal, List, Range, Badge } from 'antd-mobile'
 import './index.scss'
 import { connect } from 'react-redux'
 import { getTicketList, filterList } from '../../actions';
+import { AnimationCan } from '../animation';
 
 const foots = [
     { title: '出发 早→晚', icon: 'iconfont icon-time', color: "#33A3F4" },
@@ -9,6 +10,9 @@ const foots = [
     { title: '只看有票', icon: 'iconfont icon-piao', color: "#33A3F4" },
     { title: '综合筛选', icon: 'iconfont icon-shaixuan', color: "#33A3F4" },
 ]
+        var endList = [];
+        var startList = [];
+        var typeList = [];
 
 function closest(el, selector) {
     const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -43,7 +47,13 @@ export class Footer extends Component {
         KtrainType: false,
         ZtrainType: false,
         show:false,
-        timeFlag:false
+        timeFlag:false,
+        userSelect:{
+            endList:[],
+            startList:[],
+            typeList:[],
+        },
+        aniflag:false
     }
     shadow = (key) => {
         if (key == '综合筛选') {
@@ -111,7 +121,71 @@ export class Footer extends Component {
             // console.log(`${name}: ${value}`);
         };
     };
+    targetId=(e)=>{
+        var e = e||window.event;
+        if(e.target.getAttribute('data-id')){
+            if(e.target.className=='selected'){
+                if(e.target.getAttribute('data-id').split('-')[0] == 'start'){
+                        startList.push(e.target.getAttribute('data-id').split('-')[1])
+                }else{
+                        endList.push(e.target.getAttribute('data-id').split('-')[1])
+                }
+            }else{
+                if(e.target.getAttribute('data-id').split('-')[0] == 'start'){
+                     startList=startList.filter(item=>item!=e.target.getAttribute('data-id').split('-')[1])
+                }else{
+                     endList=endList.filter(item=>item!=e.target.getAttribute('data-id').split('-')[1])
+                }
+            }
+            
+        }
+    }
+    targetType=(e)=>{
+        var e = e||window.event;
+        if(e.target.getAttribute('data-id')){
+             if(e.target.className=='selected'){
+                typeList = typeList.filter(item=>item!=e.target.getAttribute('data-id').split('-')[1])
+             }else{
+                 typeList.push(e.target.getAttribute('data-id').split('-')[1])
+                
+             }
+        }
+    }
+    onReset=()=>{
+        var typewarp = document.getElementById('typewarp')
+        var startwarp = document.getElementById('startwarp')
+        var endwarp = document.getElementById('endwarp')
+        this.filterClass(typewarp)
+        this.filterClass(startwarp)
+        this.filterClass(endwarp)
+        endList = [];
+        startList = [];
+        typeList = [];
+    }
+    filterClass(obj){
+        var list = obj.childNodes
+        for(var i =0;i<list.length;i++){
+            list[i].className=''
+        }
+    }
+    onSubmit=()=>{
+        this.setState({
+            userSelect:{
+                endList,
+                startList,
+                typeList
+            },
+            modal2:false,
+            aniflag:true
+        })
+        setTimeout(()=>{
+            this.setState({
+                aniflag:false
+            })
+        },2000)
+    }
     render() {
+        console.log(this.state.userSelect)
         return (
             <div style={{ width: '100%', height: '1rem' }}>
                 <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
@@ -148,31 +222,44 @@ export class Footer extends Component {
                         animationType="slide-up"
                     >
                         <div className='buttongroup'>
-                            <div className="button-reset">重置</div>
-                            <div className="button-confirm">确认</div>
+                            <div className="button-reset" onClick={this.onReset}>重置</div>
+                            <div className="button-confirm" onClick={this.onSubmit}>确认</div>
                         </div>
                         <List renderHeader={() => <div style={{ textAlign: 'left' }}>车次类型</div>}>
-                            <ul className="warp">
-                                <li className={this.state.GtrainType ? 'selected' : ''} onClick={() => { this.setState({ GtrainType: !this.state.GtrainType }) }}>
+                            <ul className="warp" onClick={this.targetType} id='typewarp'>
+                                <li 
+                                data-id='type-G'
+                                className={this.state.GtrainType ? 'selected' : ''} 
+                                onClick={() => { this.setState({ GtrainType: !this.state.GtrainType }) }}>
                                     G-高速动车
                                 </li>
-                                <li className={this.state.DtrainType ? 'selected' : ''} onClick={() => { this.setState({ DtrainType: !this.state.DtrainType }) }}>
+                                <li 
+                                data-id='type-D'
+                                className={this.state.DtrainType ? 'selected' : ''} 
+                                onClick={() => { this.setState({ DtrainType: !this.state.DtrainType }) }}>
                                     D-动车组
                                 </li>
-                                <li className={this.state.KtrainType ? 'selected' : ''} onClick={() => { this.setState({ KtrainType: !this.state.KtrainType }) }}>
+                                <li 
+                                data-id='type-K'
+                                className={this.state.KtrainType ? 'selected' : ''} 
+                                onClick={() => { this.setState({ KtrainType: !this.state.KtrainType }) }}>
                                     K-快速
                                 </li>
-                                <li className={this.state.ZtrainType ? 'selected' : ''} onClick={() => { this.setState({ ZtrainType: !this.state.ZtrainType }) }}>
+                                <li 
+                                data-id='type-Z'
+                                className={this.state.ZtrainType ? 'selected' : ''} 
+                                onClick={() => { this.setState({ ZtrainType: !this.state.ZtrainType }) }}>
                                     Z-直达特快
                                 </li>
                             </ul>
                         </List>
                         <List renderHeader={() => <div style={{ textAlign: 'left' }}>出发站</div>}>
-                            <ul className="warp">
+                            <ul className="warp" onClick={this.targetId} id='startwarp'>
                                 {
                                     this.getstation().map((item, i) => {
                                         return (
                                             <li
+                                                data-id={'start-'+item}
                                                 className=''
                                                 key={i}
                                                 ref={el => this['station' + i] = el}
@@ -186,11 +273,12 @@ export class Footer extends Component {
                             </ul>
                         </List>
                         <List renderHeader={() => <div style={{ textAlign: 'left' }}>到达站</div>}>
-                            <ul className="warp">
+                            <ul className="warp" onClick={this.targetId} id='endwarp'>
                                 {
                                     this.getendstation().map((item, i) => {
                                         return (
                                             <li
+                                                data-id ={'end-'+item}
                                                 className=''
                                                 key={i}
                                                 ref={el => this['endstation' + i] = el}
@@ -228,6 +316,7 @@ export class Footer extends Component {
 
                     </Modal>
                 </div>
+                <AnimationCan flag={this.state.aniflag}/>
             </div>
         )
     }
